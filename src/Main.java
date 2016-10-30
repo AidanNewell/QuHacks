@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.image.BufferStrategy;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JFrame;
@@ -24,6 +25,8 @@ public class Main extends Canvas{
 	private static double squareSize;
 	
 	private static JFrame window;
+	
+	private static ArrayList<Enemy> enemies; 
 	
 	public Main()
 	{
@@ -83,7 +86,7 @@ public class Main extends Canvas{
 				{
 					graphics.setColor(new Color(195,103,42));
 				}
-				graphics.fillRect((int)(x*squareSize), (int)(y*squareSize), (int)(squareSize), (int)(squareSize));
+				graphics.fillRect((int)(y*squareSize), (int)(x*squareSize), (int)(squareSize), (int)(squareSize));
 			}
 		}
 		graphics.dispose();
@@ -117,6 +120,7 @@ public class Main extends Canvas{
 					else if(mapPiece.equals("!"))
 					{
 						map[x][y] = 0;
+						enemies.add(new Enemy(x*squareSize,y*squareSize));
 					}
 					else
 					{
